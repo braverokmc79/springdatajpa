@@ -20,11 +20,27 @@ public class JpaRunner implements ApplicationRunner {
         Account account=new Account();
         account.setUsername("HongGilDong");
         account.setPassword("jpa");
-        //entityManager.persist(account);
 
+        //entityManager.persist(account);
+        Study study =new Study();
+        study.setName("Spring Data JPA");
+
+        //보조적인 설정
+//        account.getStudies().add(study);
+//        //항상 관계의 주인에 넣어줘야 한다.
+//        study.setOwner(account);
+
+        //====>
+        account.addStudy(study);
+
+        
         Session session =entityManager.unwrap(Session.class);
         session.save(account);
+        session.save(study);
     }
+
+
+
 
 
 }
