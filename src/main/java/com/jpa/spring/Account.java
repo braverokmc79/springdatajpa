@@ -1,11 +1,12 @@
 package com.jpa.spring;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jdk.jfr.Timestamp;
 import lombok.Data;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Data
@@ -15,9 +16,19 @@ public class Account {
     @GeneratedValue
     private Long id;
 
+    @Column(nullable = false, unique = true)
     private String username;
 
     private String password;
+
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date created=new Date();
+
+    @Transient
+    private String yes;
+
+    private String no;
 
 
 }
