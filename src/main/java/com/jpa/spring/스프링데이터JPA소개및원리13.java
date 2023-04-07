@@ -6,7 +6,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-@Component
+//@Component
 @Transactional
 public class 스프링데이터JPA소개및원리13  implements ApplicationRunner {
 
