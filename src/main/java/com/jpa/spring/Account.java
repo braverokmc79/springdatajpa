@@ -6,13 +6,16 @@ import lombok.Data;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
 @Data
 public class Account {
+
     @Id
     @GeneratedValue
+    @Column(name = "account_id")
     private Long id;
 
     @Column(nullable = false, unique = true)
@@ -38,14 +41,8 @@ public class Account {
     private Address address;
 
 
-    //CascadeType.ALL 는 order
-    //    persist(ownerA);
-    //    persist(ownerB);
-    //    persist(ownerB);
-    //    persist(ownerB);
-    //    persist(study);
-    // =>persist를 각각 해줘야 하는데 CascadeType.ALL  적용하면  persist(study); 한번에 적용된다.
-     @OneToMany(mappedBy ="owner", cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy ="owner")
     private Set<Study> studies=new HashSet<>();
 
 
@@ -59,6 +56,7 @@ public class Account {
         this.getStudies().remove(study);
         study.setOwner(null);
     }
+
 
 
 

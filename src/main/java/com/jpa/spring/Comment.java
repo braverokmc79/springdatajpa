@@ -1,22 +1,24 @@
 package com.jpa.spring;
 
+
 import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
 @Data
-public class Study {
+public class Comment {
 
     @Id
     @GeneratedValue
-    @Column(name="study_id")
+    @Column(name="comment_id")
     private Long id;
 
-    private String name;
+    private String comment;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "account_id")
-    private Account owner;
+    @JoinColumn(name="post_id")
+    private Post post;
 
 
 }
