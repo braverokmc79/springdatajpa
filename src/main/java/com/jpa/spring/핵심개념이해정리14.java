@@ -1,13 +1,11 @@
 package com.jpa.spring;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-@Component
+//@Component
 @Transactional
 public class 핵심개념이해정리14 implements ApplicationRunner {
 
@@ -24,6 +22,4 @@ public class 핵심개념이해정리14 implements ApplicationRunner {
 
         postRepository.save(post);
     }
-
-
 }
